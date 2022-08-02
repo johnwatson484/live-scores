@@ -16,9 +16,17 @@ services:
       - ./app:/home/node/app
       - ./package.json:/home/node/package.json
     depends_on: 
+      - live-scores-message
       - live-scores-redis
     environment:
       REDIS_HOST: live-scores-redis
+      MESSAGE_HOST: live-scores-message
+      MESSAGE_USERNAME: rabbitmq
+      MESSAGE_PASSWORD: rabbitmq
+    entrypoint: >
+      sh -c "
+        scripts/wait-for live-scores-message:5672 --
+        npm run start:watch"
 
   live-scores-redis:
     image: redis:6
@@ -26,6 +34,19 @@ services:
       - redis_data:/data
     ports:
       - "6379:6379"
+
+  live-scores-message:
+    image: rabbitmq:3-management-alpine
+    container_name: live-scores-message
+    hostname: live-scores-message
+    environment:
+      RABBITMQ_ERLANG_COOKIE: rabbitmq
+      RABBITMQ_DEFAULT_USER: rabbitmq
+      RABBITMQ_DEFAULT_PASS: rabbitmq
+      RABBITMQ_DEFAULT_VHOST: /
+    ports:
+      - "15672:15672"
+      - "5672:5672"
 
 volumes:
   redis_data:

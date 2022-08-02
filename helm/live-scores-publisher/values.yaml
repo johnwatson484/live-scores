@@ -10,8 +10,14 @@ container:
   limitCpu: 120m
   redisHost:
   redisPassword:
+  messageHost:
+  messagePassword:
+  messageExchange: live-scores
 
 deployment:
   restartPolicy: Always
   replicas: 1
   minReadySeconds: 5
+
+secret:
+  type: Opaque

@@ -1,6 +1,6 @@
 {
   "name": "live-scores-publisher",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Publish live scores",
   "main": "app/index.js",
   "scripts": {
@@ -10,10 +10,11 @@
   "author": "John Watson",
   "license": "MIT",
   "dependencies": {
-    "@hapi/hoek": "^10.0.1",
-    "@hapi/wreck": "^18.0.0",
+    "@hapi/hoek": "10.0.1",
+    "@hapi/wreck": "18.0.0",
+    "amqplib": "0.10.1",
     "joi": "17.6.0",
-    "redis": "^4.2.0"
+    "redis": "4.2.0"
   },
   "devDependencies": {
     "nodemon": "2.0.19",
