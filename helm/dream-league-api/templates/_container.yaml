@@ -1,0 +1,5 @@
+{{- define "live-scores-publisher.container" -}}
+envFrom:
+- configMapRef:
+    name: {{ .Values.name }}
+{{- end -}}

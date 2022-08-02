@@ -1,0 +1,5 @@
+{{- include "helm-library.configmap" (list . "live-scores-publisher.configmap") -}}
+{{- define "live-scores-publisher.configmap" -}}
+data:
+  NODE_ENV: {{ quote .Values.environment }}
+{{- end -}}
