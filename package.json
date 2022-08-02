@@ -10,8 +10,10 @@
   "author": "John Watson",
   "license": "MIT",
   "dependencies": {
+    "@hapi/hoek": "^10.0.1",
     "@hapi/wreck": "^18.0.0",
-    "joi": "17.6.0"
+    "joi": "17.6.0",
+    "redis": "^4.2.0"
   },
   "devDependencies": {
     "nodemon": "2.0.19",

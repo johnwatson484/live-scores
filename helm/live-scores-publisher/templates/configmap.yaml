@@ -2,4 +2,5 @@
 {{- define "live-scores-publisher.configmap" -}}
 data:
   NODE_ENV: {{ quote .Values.environment }}
+  REDIS_HOST: {{ quote .Values.container.redisHost }}
 {{- end -}}
