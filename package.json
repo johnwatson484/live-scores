@@ -1,0 +1,51 @@
+{
+  "name": "hapi-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/index.js",
+  "scripts": {
+    "pretest": "npm run test:lint",
+    "test": "jest --runInBand --forceExit",
+    "test:watch": "jest --coverage=false --onlyChanged --watch --runInBand",
+    "test:lint": "standard",
+    "test:debug": "node --inspect-brk=0.0.0.0 ./node_modules/jest/bin/jest.js --coverage=false --onlyChanged --watch --runInBand --no-cache",
+    "start:watch": "nodemon --inspect=0.0.0.0 --ext js --legacy-watch app/index.js",
+    "start:debug": "nodemon --inspect-brk=0.0.0.0 --ext js --legacy-watch app/index.js"
+  },
+  "author": "John Watson",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/boom": "^9.1.4",
+    "@hapi/crumb": "^8.0.1",
+    "hapi-pino": "^9.0.0",
+    "@hapi/hapi": "^20.2.1",
+    "@hapi/inert": "^6.0.4",
+    "joi": "^17.4.2",
+    "@hapi/vision": "^6.1.0",
+    "nunjucks": "^3.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14",
+    "standard": "^16.0.4",
+    "blipp": "^4.0.2",
+    "jest": "^27.3.1",
+    "jest-junit": "^13.0.0"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "beforeEach",
+      "expect",
+      "test",
+      "afterEach",
+      "jest",
+      "beforeAll",
+      "afterAll"
+    ]
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/test-output/**"
+    ]
+  }
+}
