@@ -1,8 +1,3 @@
-const createServer = require('./server')
-
-createServer()
-  .then(server => server.start())
-  .catch(err => {
-    console.log(err)
-    process.exit(1)
-  })
+module.exports = (async () => {
+  console.log('Ready to publish')
+})()

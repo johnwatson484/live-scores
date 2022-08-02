@@ -1,4 +1,4 @@
 version: '3.8'
 services:
-  hapi-template:
+  live-scores-publisher:
     command: npm run start:debug

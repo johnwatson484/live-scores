@@ -4,11 +4,11 @@ version: '3.8'
 # to provide dependencies and expose ports for local testing
 
 services:
-  hapi-template:
+  live-scores-publisher:
     build:
       target: development
-    image: hapi-template-development
-    container_name: hapi-template-development
+    image: live-scores-publisher-development
+    container_name: live-scores-publisher-development
     ports:
       - "3000:3000"
       - "9229:9229"
