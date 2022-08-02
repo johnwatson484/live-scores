@@ -1,9 +1,9 @@
-const publish = require('./publish')
+const source = require('./source')
 const cache = require('./cache')
 
 const main = async () => {
   await cache.start()
-  await publish.start()
+  await source.start()
 }
 
 for (const signal of ['SIGINT', 'SIGTERM', 'SIGQUIT']) {
