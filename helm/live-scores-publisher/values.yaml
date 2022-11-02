@@ -1,9 +1,8 @@
-environment: development
+environment: production
 name: live-scores-publisher
 image: live-scores-publisher
 
 container:
-  imagePullPolicy: Always
   requestMemory: 120Mi
   requestCpu: 120m
   limitMemory: 120Mi
@@ -11,13 +10,11 @@ container:
   redisHost:
   redisPassword:
   messageHost:
+  messageUsername:
   messagePassword:
   messageExchange: live-scores
 
-deployment:
-  restartPolicy: Always
-  replicas: 1
-  minReadySeconds: 5
+deployment: {}
 
 secret:
   type: Opaque

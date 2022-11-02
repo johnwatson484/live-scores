@@ -1,5 +1,5 @@
 # Development
-FROM node:16-alpine AS development
+FROM node:18-alpine AS development
 ENV NODE_ENV development
 EXPOSE 9229
 # Set global npm dependencies to be stored under the node user directory
@@ -13,7 +13,7 @@ USER node
 WORKDIR /home/node
 COPY --chown=node:node package*.json ./
 RUN npm install --production=false
-COPY --chown=node:node . .
+COPY --chown=node:node ./app ./app
 CMD [ "npm", "run", "start:watch" ]
 
 # Production
