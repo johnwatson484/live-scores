@@ -6,11 +6,9 @@ const main = async () => {
   await source.start()
 }
 
-for (const signal of ['SIGINT', 'SIGTERM', 'SIGQUIT']) {
-  process.on(signal, async () => {
-    await cache.stop()
-    process.exit()
-  })
-}
+process.on(['SIGINT', 'SIGTERM'], async () => {
+  await cache.stop()
+  process.exit()
+})
 
 main()
