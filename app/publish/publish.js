@@ -1,5 +1,5 @@
 const amqp = require('amqplib')
-const { message } = require('./config')
+const { message } = require('../config')
 
 const publish = async (scores) => {
   const { host, port, username, password, exchange } = message
@@ -9,8 +9,8 @@ const publish = async (scores) => {
     durable: true
   })
 
-  for (const msg of scores) {
-    const body = JSON.stringify(msg)
+  for (const score of scores) {
+    const body = JSON.stringify(score)
     await channel.publish(exchange, '', Buffer.from(body))
     console.log('Score update:', body)
   }

@@ -1,9 +1,13 @@
 const Joi = require('joi')
-const envs = ['development', 'test', 'production']
+const { DEVELOPMENT, TEST, PRODUCTION } = require('./constants/environments')
 
 // Define config schema
 const schema = Joi.object().keys({
-  env: Joi.string().valid(...envs).default(envs[0]),
+  env: Joi.string().valid(DEVELOPMENT, TEST, PRODUCTION).default(DEVELOPMENT),
+  api: Joi.object({
+    host: Joi.string().required(),
+    key: Joi.string().required()
+  }),
   cache: Joi.object({
     socket: Joi.object({
       host: Joi.string(),
@@ -21,12 +25,16 @@ const schema = Joi.object().keys({
     password: Joi.string(),
     exchange: Joi.string().default('live-scores')
   }),
-  frequency: Joi.number().default(10000) // 10 seconds
+  frequency: Joi.number().default(10000) // 1000 seconds
 })
 
 // Build config
 const config = {
   env: process.env.NODE_ENV,
+  api: {
+    host: process.env.API_HOST,
+    key: process.env.API_KEY
+  },
   cache: {
     socket: {
       host: process.env.REDIS_HOST,

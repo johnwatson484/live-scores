@@ -1,4 +1,5 @@
-const { frequency } = require('./config')
+const { frequency } = require('../config')
+const { source } = require('./source')
 
 const start = async () => {
   try {
@@ -8,10 +9,6 @@ const start = async () => {
   } finally {
     setTimeout(start, frequency)
   }
-}
-
-const source = async () => {
-  console.log('Publishing...')
 }
 
 module.exports = {

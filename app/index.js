@@ -1,13 +1,13 @@
-const source = require('./source')
-const cache = require('./cache')
+const { start: startCache, stop: stopCache } = require('./cache')
+const { start: startSource } = require('./source')
 
 const main = async () => {
-  await cache.start()
-  await source.start()
+  await startCache()
+  await startSource()
 }
 
 process.on(['SIGINT', 'SIGTERM'], async () => {
-  await cache.stop()
+  await stopCache()
   process.exit()
 })
 

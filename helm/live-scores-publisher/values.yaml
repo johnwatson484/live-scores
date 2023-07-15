@@ -13,6 +13,8 @@ container:
   messageUsername:
   messagePassword:
   messageExchange: live-scores
+  apiHost:
+  apiKey:
 
 deployment: {}
 
