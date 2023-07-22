@@ -1,13 +1,9 @@
 const Joi = require('joi')
 const { DEVELOPMENT, TEST, PRODUCTION } = require('./constants/environments')
 
-// Define config schema
 const schema = Joi.object().keys({
   env: Joi.string().valid(DEVELOPMENT, TEST, PRODUCTION).default(DEVELOPMENT),
-  api: Joi.object({
-    host: Joi.string().required(),
-    key: Joi.string().required()
-  }),
+  endpoint: Joi.string().uri().default('https://www.bbc.com/sport/football/scores-fixtures/'),
   cache: Joi.object({
     socket: Joi.object({
       host: Joi.string(),
@@ -25,16 +21,12 @@ const schema = Joi.object().keys({
     password: Joi.string(),
     exchange: Joi.string().default('live-scores')
   }),
-  frequency: Joi.number().default(10000) // 1000 seconds
+  frequency: Joi.number().default(10000) // 10 seconds
 })
 
-// Build config
 const config = {
   env: process.env.NODE_ENV,
-  api: {
-    host: process.env.API_HOST,
-    key: process.env.API_KEY
-  },
+  endpoint: process.env.ENDPOINT,
   cache: {
     socket: {
       host: process.env.REDIS_HOST,
@@ -55,14 +47,12 @@ const config = {
   frequency: process.env.FREQUENCY
 }
 
-// Validate config
 const { error, value } = schema.validate(config)
 
-// Throw if config is invalid
 if (error) {
   throw new Error(`The server config is invalid. ${error.message}`)
 }
 
-value.isDev = value.env === 'development'
+value.isDev = value.env === DEVELOPMENT
 
 module.exports = value

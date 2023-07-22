@@ -1,8 +1,0 @@
-{{- include "helm-library.deployment" (list . "live-scores-publisher.deployment") -}}
-{{- define "live-scores-publisher.deployment" -}}
-spec:
-  template:
-    spec:
-      containers:
-      - {{ include "helm-library.container" (list . "live-scores-publisher.container") }}
-{{- end -}}

@@ -1,0 +1,2 @@
+#!/bin/sh
+docker exec -it live-scores-publisher-development node app

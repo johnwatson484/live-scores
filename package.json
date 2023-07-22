@@ -1,6 +1,6 @@
 {
   "name": "live-scores-publisher",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "Publish live scores",
   "main": "app/index.js",
   "scripts": {
@@ -14,10 +14,12 @@
     "@hapi/wreck": "18.0.0",
     "amqplib": "0.10.1",
     "joi": "17.6.0",
-    "redis": "4.2.0"
+    "moment": "2.29.4",
+    "redis": "4.2.0",
+    "selenium-webdriver": "4.10.0"
   },
   "devDependencies": {
-    "nodemon": "2.0.19",
+    "nodemon": "3.0.1",
     "standard": "17.0.0"
   },
   "standard": {

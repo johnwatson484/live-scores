@@ -18,4 +18,6 @@ const publish = async (scores) => {
   await connection.close()
 }
 
-module.exports = publish
+module.exports = {
+  publish
+}

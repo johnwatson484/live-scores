@@ -13,10 +13,13 @@ container:
   messageUsername:
   messagePassword:
   messageExchange: live-scores
-  apiHost: test-api
-  apiKey: test-api-key
+  endpoint:
 
-deployment: {}
+cronJob:
+  schedule: "0 23 * * *" # 23:00 every day
+  concurrencyPolicy: Forbid
+  restartPolicy: Never
+  successfulJobsHistoryLimit: 1
 
 secret:
   type: Opaque

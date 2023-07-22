@@ -9,6 +9,17 @@ ENV PATH=$PATH:/home/node/.npm-global/bin
 RUN apk update && \
     apk add --no-cache git
 
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+
+# Install Chromium
+RUN apk add --no-cache \
+    chromium \
+    chromium-chromedriver \
+    nss \
+    freetype \
+    harfbuzz \
+    ttf-freefont
+
 USER node
 WORKDIR /home/node
 COPY --chown=node:node package*.json ./
