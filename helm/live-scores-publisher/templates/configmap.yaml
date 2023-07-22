@@ -5,5 +5,4 @@ data:
   REDIS_HOST: {{ quote .Values.container.redisHost }}
   MESSAGE_HOST: {{ quote .Values.container.messageHost }}
   MESSAGE_EXCHANGE: {{ quote .Values.container.messageExchange }}
-  ENDPOINT: {{ quote .Values.container.endpoint }}
 {{- end -}}
