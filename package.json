@@ -1,6 +1,6 @@
 {
   "name": "live-scores-publisher",
-  "version": "1.2.11",
+  "version": "1.2.12",
   "description": "Publish live scores",
   "main": "app/index.js",
   "scripts": {

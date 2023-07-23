@@ -72,14 +72,8 @@ const showScorers = async (driver) => {
 }
 
 const closeModal = async (driver) => {
-  try {
-    await driver.wait(until.elementLocated(By.xpath('//button[@title="I do not agree"]')), 10000)
-    await driver.findElement(By.xpath('//button[@title="I do not agree"]')).click()
-  } catch (err) {
-    console.log(err)
-    const source = await driver.getPageSource()
-    console.log(source)
-  }
+  await driver.wait(until.elementLocated(By.id('bbccookies-continue-button')), 10000)
+  await driver.findElement(By.id('bbccookies-continue-button')).click()
 }
 
 const getMatches = async (matchElements, date, competition) => {
