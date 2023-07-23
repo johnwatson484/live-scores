@@ -5,8 +5,8 @@ image: live-scores-publisher
 container:
   requestMemory: 120Mi
   requestCpu: 120m
-  limitMemory: 300Mi
-  limitCpu: 200m
+  limitMemory: 500Mi
+  limitCpu: 500m
   redisHost:
   redisPassword:
   messageHost:
