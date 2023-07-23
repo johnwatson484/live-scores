@@ -10,6 +10,7 @@ services:
     volumes:
       - ./app:/home/node/app
       - ./package.json:/home/node/package.json
+      - ./scripts:/home/node/scripts
     depends_on: 
       - live-scores-message
       - live-scores-redis
@@ -20,7 +21,7 @@ services:
       MESSAGE_PASSWORD: rabbitmq
     entrypoint: >
       sh -c "
-        scripts/wait-for live-scores-message:5672 --
+        ./scripts/wait-for live-scores-message:5672 --
         npm run start:watch"
 
   live-scores-redis:
