@@ -38,7 +38,7 @@ const getScores = async () => {
       const competitionName = await competitionElement.findElement(By.css('h3')).getText()
       if (Object.values(competitions).includes(competitionName?.toUpperCase())) {
         const matchElements = await competitionElement.findElements(By.className('gs-o-list-ui__item'))
-        const competitionScores = await getMatches(matchElements, date)
+        const competitionScores = await getMatches(matchElements, date, competitionName)
         scores.push(...competitionScores)
       }
     }
@@ -50,7 +50,7 @@ const getScores = async () => {
 
 const cacheScores = async (scores) => {
   for (const match of scores) {
-    const key = `${match.date}-${match.homeTeam}-${match.awayTeam}`
+    const key = `${match.date}-${match.competition}-${match.homeTeam}-${match.awayTeam}`
     await update('live-scores', key, match)
   }
 }
@@ -61,7 +61,7 @@ const showScorers = async (driver) => {
   await driver.wait(until.elementLocated(By.className('qa-match-block')), 2000)
 }
 
-const getMatches = async (matchElements, date) => {
+const getMatches = async (matchElements, date, competition) => {
   const matches = []
   for (const matchElement of matchElements) {
     // try {
@@ -78,6 +78,7 @@ const getMatches = async (matchElements, date) => {
 
     const match = {
       date,
+      competition,
       homeTeam,
       awayTeam,
       homeScore,
