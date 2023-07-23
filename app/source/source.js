@@ -72,6 +72,7 @@ const showScorers = async (driver) => {
 }
 
 const closeModal = async (driver) => {
+  await driver.wait(until.elementLocated(By.xpath('//button[@title="I do not agree"]')), 10000)
   await driver.findElement(By.xpath('//button[@title="I do not agree"]')).click()
 }
 
