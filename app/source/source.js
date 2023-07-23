@@ -56,9 +56,9 @@ const cacheScores = async (scores) => {
 }
 
 const showScorers = async (driver) => {
-  await driver.wait(until.elementLocated(By.className('qa-match-block')), 2000)
+  await driver.wait(until.elementLocated(By.css('.qa-match-block')), 2000)
   await driver.findElement(By.className('qa-show-scorers-button')).click()
-  await driver.wait(until.elementLocated(By.className('qa-match-block')), 2000)
+  await driver.wait(until.elementLocated(By.css('.qa-match-block')), 2000)
 }
 
 const getMatches = async (matchElements, date, competition) => {
