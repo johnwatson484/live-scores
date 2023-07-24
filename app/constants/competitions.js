@@ -1,9 +1,9 @@
 module.exports = {
-  PREMIER_LEAGUE: 'PREMIER LEAGUE',
-  CHAMPIONSHIP: 'CHAMPIONSHIP',
-  LEAGUE_ONE: 'LEAGUE ONE',
-  LEAGUE_TWO: 'LEAGUE TWO',
-  FA_CUP: 'THE FA CUP',
-  EFL_CUP: 'EFL CUP',
-  WOMENS_WORLD_CUP: 'WOMEN\'S WORLD CUP'
+  PREMIER_LEAGUE: 'Premier League',
+  CHAMPIONSHIP: 'Championship',
+  LEAGUE_ONE: 'League One',
+  LEAGUE_TWO: 'League Two',
+  FA_CUP: 'The FA Cup',
+  EFL_CUP: 'EFL Cup',
+  WOMENS_WORLD_CUP: 'Women\'s World Cup'
 }

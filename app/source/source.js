@@ -44,7 +44,7 @@ const getScores = async () => {
     const competitionElements = await driver.findElements(By.className('qa-match-block'))
     for (const competitionElement of competitionElements) {
       const competitionName = await competitionElement.findElement(By.css('h3')).getText()
-      if (Object.values(competitions).includes(competitionName?.toUpperCase())) {
+      if (Object.values(competitions).map(x => x.toUpperCase()).includes(competitionName?.toUpperCase())) {
         const matchElements = await competitionElement.findElements(By.className('gs-o-list-ui__item'))
         const competitionScores = await getMatches(matchElements, date, competitionName)
         scores.push(...competitionScores)
