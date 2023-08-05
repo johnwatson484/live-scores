@@ -5,6 +5,7 @@ const { SIGINT, SIGTERM } = require('./constants/signals')
 const main = async () => {
   await startCache()
   await startSource()
+  await stopCache()
 }
 
 process.on([SIGINT, SIGTERM], async () => {
