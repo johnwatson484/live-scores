@@ -12,7 +12,7 @@ Either:
 - Docker Compose
 
 Or:
-- Node 16+
+- Node 18+
 
 ## Running application
 ### Docker
