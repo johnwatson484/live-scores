@@ -10,19 +10,16 @@ services:
     volumes:
       - ./app:/home/node/app
       - ./package.json:/home/node/package.json
-      - ./scripts:/home/node/scripts
     depends_on: 
-      - live-scores-message
-      - live-scores-redis
+      live-scores-message:
+        condition: service_healthy
+      live-scores-redis:
+        condition: service_started
     environment:
       REDIS_HOST: live-scores-redis
       MESSAGE_HOST: live-scores-message
       MESSAGE_USERNAME: rabbitmq
       MESSAGE_PASSWORD: rabbitmq
-    entrypoint: >
-      sh -c "
-        ./scripts/wait-for live-scores-message:5672 --
-        npm run start:watch"
 
   live-scores-redis:
     image: redis:6
@@ -43,6 +40,12 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 10s
+      retries: 5
+      start_period: 1s
+      timeout: 10s
 
 volumes:
   redis_data:

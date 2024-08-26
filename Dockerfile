@@ -1,6 +1,6 @@
 # Development
-FROM node:18-alpine AS development
-ENV NODE_ENV development
+FROM node:20-alpine AS development
+ENV NODE_ENV=development
 EXPOSE 9229
 # Set global npm dependencies to be stored under the node user directory
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
@@ -15,9 +15,9 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 RUN apk add --no-cache \
     chromium \
     chromium-chromedriver \
-    nss \
     freetype \
     harfbuzz \
+    nss \
     ttf-freefont
 
 USER node
@@ -29,6 +29,6 @@ CMD [ "npm", "run", "start:watch" ]
 
 # Production
 FROM development AS production
-ENV NODE_ENV production
+ENV NODE_ENV=production
 RUN npm ci
 CMD [ "node", "app" ]
