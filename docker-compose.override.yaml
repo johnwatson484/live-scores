@@ -41,10 +41,10 @@ services:
       - "15672:15672"
       - "5672:5672"
     healthcheck:
-      test: rabbitmq-diagnostics -q ping
+      test: rabbitmq-diagnostics -q ping --erlang-cookie rabbitmq
       interval: 10s
       retries: 5
-      start_period: 1s
+      start_period: 5s
       timeout: 10s
 
 volumes:

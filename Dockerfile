@@ -23,7 +23,7 @@ RUN apk add --no-cache \
 USER node
 WORKDIR /home/node
 COPY --chown=node:node package*.json ./
-RUN npm install --production=false
+RUN npm install
 COPY --chown=node:node ./app ./app
 CMD [ "npm", "run", "start:watch" ]
 
