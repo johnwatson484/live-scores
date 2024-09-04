@@ -17,4 +17,3 @@ extends:
     name: live-scores-publisher
     deploy: true
     namespace: live-scores
-    hasSecureHelmValuesFile: true

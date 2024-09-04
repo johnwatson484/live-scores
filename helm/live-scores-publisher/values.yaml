@@ -7,11 +7,8 @@ container:
   requestCpu: 120m
   limitMemory: 500Mi
   limitCpu: 500m
-  redisHost:
-  redisPassword:
-  messageHost:
-  messageUsername:
-  messagePassword:
+  redisHost: services.lynxmagnus.com
+  messageHost: services.lynxmagnus.com
   messageExchange: live-scores
 
 cronJob: 
@@ -21,4 +18,4 @@ cronJob:
   successfulJobsHistoryLimit: 1
 
 secret:
-  type: Opaque
+  secretsPath: /live-scores-publisher
