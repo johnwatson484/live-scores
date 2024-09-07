@@ -9,7 +9,6 @@ container:
   redisHost: services.lynxmagnus.com
   messageHost: services.lynxmagnus.com
   messageExchange: live-scores
-  readOnlyRootFilesystem: false
 
 cronJob: 
   schedule: "0/10 12-19 * * 6" # between 5 and 7 pm every Saturday
