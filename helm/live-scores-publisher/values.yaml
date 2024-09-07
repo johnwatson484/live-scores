@@ -3,13 +3,13 @@ name: live-scores-publisher
 image: live-scores-publisher
 
 container:
-  requestMemory: 120Mi
+  requestMemory: 500Mi
   requestCpu: 120m
   limitMemory: 500Mi
-  limitCpu: 500m
   redisHost: services.lynxmagnus.com
   messageHost: services.lynxmagnus.com
   messageExchange: live-scores
+  readOnlyRootFilesystem: false
 
 cronJob: 
   schedule: "0/10 12-19 * * 6" # between 5 and 7 pm every Saturday
