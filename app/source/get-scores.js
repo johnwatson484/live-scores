@@ -13,7 +13,7 @@ const getScores = async () => {
   options.addArguments('headless')
   options.addArguments('disable-gpu')
   options.addArguments('user-data-dir=/tmp/google-chrome')
-  options.addArguments('remote-debugging-port=0')
+  options.addArguments('remote-debugging-port=9222')
   const driver = new Builder().forBrowser(Browser.CHROME).setChromeOptions(options).build()
   await driver.manage().deleteAllCookies()
 
